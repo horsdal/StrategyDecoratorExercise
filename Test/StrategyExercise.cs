@@ -7,11 +7,11 @@
   using Xunit;
   using Xunit.Extensions;
 
-  public class PriceCalculationTests
+  public class StrategyExercise
   {
     private Amount total;
 
-    public PriceCalculationTests()
+    public StrategyExercise()
     {
       total = new Amount(Currency.DKK, 100d);
     }
@@ -42,7 +42,7 @@
     public void danish_tax_is_25_percent(double itemPrice, bool isConsumer)
     {
       // arrange
-      var expected = new Price(total, total * 0.25);
+      var expected = new Price(new Amount(Currency.DKK, itemPrice * 4), new Amount(Currency.DKK, itemPrice));
       var sut = new DanishTaxCalculationStrategy();
       var calculator = new PriceCalculator(sut);
       var order = CreateOrder(calculator, itemPrice, isConsumer);
