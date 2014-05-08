@@ -1,4 +1,4 @@
-﻿namespace StrategyDecoratorExercise.Strategy
+﻿namespace StrategyDecoratorExercise.Decorator.Money
 {
   using System;
 

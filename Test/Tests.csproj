@@ -54,7 +54,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PriceCalculationTests.cs" />
+    <Compile Include="DecoratorExercise.cs" />
+    <Compile Include="StrategyExercise.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

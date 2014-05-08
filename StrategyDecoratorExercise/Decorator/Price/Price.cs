@@ -1,6 +1,6 @@
-﻿namespace StrategyDecoratorExercise.Strategy
+﻿namespace StrategyDecoratorExercise.Decorator.Price
 {
-  using System;
+  using Money;
 
   public class Price
   {

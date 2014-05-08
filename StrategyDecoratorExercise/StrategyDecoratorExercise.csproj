@@ -51,6 +51,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Decorator\Customer.cs" />
+    <Compile Include="Decorator\Money\Amount.cs" />
+    <Compile Include="Decorator\Money\Currency.cs" />
+    <Compile Include="Decorator\Order\Bill.cs" />
+    <Compile Include="Decorator\Order\Order.cs" />
+    <Compile Include="Decorator\Order\OrderLine.cs" />
+    <Compile Include="Decorator\Order\Sku.cs" />
+    <Compile Include="Decorator\Price\BlackFrdayDeals.cs" />
+    <Compile Include="Decorator\Price\DanishTaxCalculationStrategy.cs" />
+    <Compile Include="Decorator\Price\LoyaltyClubDiscount.cs" />
+    <Compile Include="Decorator\Price\Price.cs" />
+    <Compile Include="Decorator\Price\PriceCalculator.cs" />
+    <Compile Include="Decorator\Price\PriceCalculatorDecorator.cs" />
+    <Compile Include="Decorator\Price\PriceWithTaxCalculator.cs" />
+    <Compile Include="Decorator\Price\SimpleTotalAmountCalculator.cs" />
+    <Compile Include="Decorator\Price\TaxCalculationStrategy.cs" />
+    <Compile Include="Decorator\Price\TotalAmountCalculator.cs" />
+    <Compile Include="Decorator\Price\VolumeDiscount.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Strategy\Money\Amount.cs" />
     <Compile Include="Strategy\Order\Bill.cs" />
