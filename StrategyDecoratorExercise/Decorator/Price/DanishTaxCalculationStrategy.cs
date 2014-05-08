@@ -1,5 +1,6 @@
 ﻿namespace StrategyDecoratorExercise.Decorator.Price
 {
+  using System;
   using Money;
   using Order;
 
@@ -7,12 +8,12 @@
   {
     public Amount B2CTax(Order order, Amount total)
     {
-      return total * 0.25;
+      throw new NotImplementedException();
     }
 
     public Amount B2BTax(Order order, Amount total)
     {
-      return total * 0.25;
+      throw new NotImplementedException();
     }
   }
 }
