@@ -59,6 +59,7 @@
     <Compile Include="Decorator\Order\OrderLine.cs" />
     <Compile Include="Decorator\Order\Sku.cs" />
     <Compile Include="Decorator\Price\BlackFrdayDeals.cs" />
+    <Compile Include="Decorator\Price\BrickFridayDiscount.cs" />
     <Compile Include="Decorator\Price\DanishTaxCalculationStrategy.cs" />
     <Compile Include="Decorator\Price\LoyaltyClubDiscount.cs" />
     <Compile Include="Decorator\Price\Price.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Strategy\Order\Bill.cs" />
     <Compile Include="Strategy\Money\Currency.cs" />
     <Compile Include="Strategy\Customer.cs" />
+    <Compile Include="Strategy\Price\MarsianTaxCalculationStrategy.cs" />
     <Compile Include="Strategy\Price\DanishTaxCalculationStrategy.cs" />
     <Compile Include="Strategy\Order\Order.cs" />
     <Compile Include="Strategy\Order\OrderLine.cs" />

@@ -1,5 +1,6 @@
 ﻿namespace StrategyDecoratorExercise.Decorator.Price
 {
+  using System.Linq;
   using Money;
   using Order;
 
@@ -18,7 +19,7 @@
 
     private bool VolumeDiscountApplies(Order order)
     {
-      return true;
+      return order.OrderLines.Sum(line => line.ItemCount) >= 10;
     }
   }
 }

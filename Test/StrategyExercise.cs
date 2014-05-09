@@ -61,7 +61,17 @@
     public void marsian_consumer_tax_is_22_percent(double itemPrice)
     {
       var itemPriceAsDecimal = (decimal)itemPrice;
-      Assert.True(false, " Exercise: implement this test to match the name and make it pass");
+      // arrange
+      var expected = new Price(new Amount(Currency.DKK, itemPriceAsDecimal * 4), new Amount(Currency.DKK, itemPriceAsDecimal * 4) *0.22m);
+      var sut = new MarisanTaxCalculationStrategy();
+      var calculator = new PriceCalculator(sut);
+      var order = CreateOrder(calculator, itemPriceAsDecimal, isConsumer: true);
+
+      // act
+      var actual = order.CreateBill().Price;
+
+      // assert
+      Assert.Equal(expected, actual);
     }
 
     [Theory]
@@ -70,7 +80,17 @@
     public void marsian_b2b_tax_is_16_percent(double itemPrice)
     {
       var itemPriceAsDecimal = (decimal)itemPrice;
-      Assert.True(false, " Exercise: implement this test to match the name and make it pass");
+      // arrange
+      var expected = new Price(new Amount(Currency.DKK, itemPriceAsDecimal * 4), new Amount(Currency.DKK, itemPriceAsDecimal * 4) * 0.16m);
+      var sut = new MarisanTaxCalculationStrategy();
+      var calculator = new PriceCalculator(sut);
+      var order = CreateOrder(calculator, itemPriceAsDecimal, isConsumer: false);
+
+      // act
+      var actual = order.CreateBill().Price;
+
+      // assert
+      Assert.Equal(expected, actual);
     }
 
     private Order CreateOrder(PriceCalculator priceCalculator, decimal itemPrice, bool isConsumer, Currency currency = Currency.DKK)

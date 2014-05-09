@@ -8,12 +8,12 @@
   {
     public Amount B2CTax(Order order, Amount total)
     {
-      throw new NotImplementedException();
+      return total * 0.25m;
     }
 
     public Amount B2BTax(Order order, Amount total)
     {
-      throw new NotImplementedException();
+      return total * 0.25m;
     }
   }
 }

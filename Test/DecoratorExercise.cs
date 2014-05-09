@@ -49,19 +49,49 @@
     [Fact]
     public void blackfriday_discount_is_25_percent()
     {
-      Assert.True(false, " Exercise: implement this test to match the name and make it pass");
+      // arrange
+      var expected = new Price(new Amount(Currency.DKK, 25 * 4 * 0.75m), new Amount(Currency.DKK, 25 * 4 * 0.75m) * 0.25m);
+      var taxCalculator = new DanishTaxCalculationStrategy();
+      var sut = new PriceWithTaxCalculator(taxCalculator, new BrickFridayDiscount(new SimpleTotalAmountCalculator()));
+      var order = CreateOrder(sut, 25, isConsumer: true, numItems: 4);
+
+      // act
+      var actual = order.CreateBill().Price;
+
+      // assert
+      Assert.Equal(expected, actual);
     }
 
     [Fact]
     public void blackfriday_and_volumet_discounts_are_both_applied_with_enough_items()
     {
-      Assert.True(false, " Exercise: implement this test to match the name and make it pass");
+      // arrange
+      var expected = new Price(new Amount(Currency.DKK, 25 * 40 * 0.75m * 0.9m), new Amount(Currency.DKK, 25 * 40 * 0.75m * 0.9m) * 0.25m);
+      var taxCalculator = new DanishTaxCalculationStrategy();
+      var sut = new PriceWithTaxCalculator(taxCalculator, new VolumeDiscount(new BrickFridayDiscount(new SimpleTotalAmountCalculator())));
+      var order = CreateOrder(sut, 25, isConsumer: true, numItems: 40);
+
+      // act
+      var actual = order.CreateBill().Price;
+
+      // assert
+      Assert.Equal(expected, actual);
     }
 
     [Fact]
     public void blackfriday_but_not_volume_discount_is_applied_with_too_few_items()
     {
-      Assert.True(false, " Exercise: implement this test to match the name and make it pass");
+      // arrange
+      var expected = new Price(new Amount(Currency.DKK, 25 * 4 * 0.75m), new Amount(Currency.DKK, 25 * 4 * 0.75m) * 0.25m);
+      var taxCalculator = new DanishTaxCalculationStrategy();
+      var sut = new PriceWithTaxCalculator(taxCalculator, new VolumeDiscount(new BrickFridayDiscount(new SimpleTotalAmountCalculator())));
+      var order = CreateOrder(sut, 25, isConsumer: true, numItems: 4);
+
+      // act
+      var actual = order.CreateBill().Price;
+
+      // assert
+      Assert.Equal(expected, actual);
     }
 
 
