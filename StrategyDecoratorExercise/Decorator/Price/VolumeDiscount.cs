@@ -12,7 +12,7 @@
     protected override Amount DecorateAmount(Order order, Amount baseAmount)
     {
       if (VolumeDiscountApplies(order))
-        return baseAmount * 0.9;
+        return baseAmount * 0.9m;
       return baseAmount;
     }
 

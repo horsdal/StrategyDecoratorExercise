@@ -13,20 +13,20 @@
 
     public StrategyExercise()
     {
-      total = new Amount(Currency.DKK, 100d);
+      total = new Amount(Currency.DKK, 100);
     }
 
     [Fact]
     public void add_tax_to_total()
     {
       // arrange
-      var tax = new Amount(Currency.DKK, 25d);
+      var tax = new Amount(Currency.DKK, 25);
       var expected = new Price(total, tax);
       var fakeTaxStrategy = A.Fake<TaxCalculationStrategy>();
       A.CallTo(fakeTaxStrategy).WithReturnType<Amount>().Returns(tax);
 
       var sut = new PriceCalculator(fakeTaxStrategy);
-      var order = CreateOrder(sut, 25d, isConsumer: true);
+      var order = CreateOrder(sut, 25, isConsumer: true);
 
       // act
       var actual = order.CreateBill().Price;
@@ -42,10 +42,11 @@
     public void danish_tax_is_25_percent(double itemPrice, bool isConsumer)
     {
       // arrange
-      var expected = new Price(new Amount(Currency.DKK, itemPrice * 4), new Amount(Currency.DKK, itemPrice));
+      var itemPriceAsDecimal = (decimal)itemPrice;
+      var expected = new Price(new Amount(Currency.DKK, itemPriceAsDecimal * 4), new Amount(Currency.DKK, itemPriceAsDecimal));
       var sut = new DanishTaxCalculationStrategy();
       var calculator = new PriceCalculator(sut);
-      var order = CreateOrder(calculator, itemPrice, isConsumer);
+      var order = CreateOrder(calculator, itemPriceAsDecimal, isConsumer);
 
       // act
       var actual = order.CreateBill().Price;
@@ -57,20 +58,22 @@
     [Theory]
     [InlineData(0), InlineData(0.1), InlineData(1), InlineData(10000)]
     [AutoData]
-    public void marsian_consumer_tax_is_22_percent(double itemPrice, bool isConsumer)
+    public void marsian_consumer_tax_is_22_percent(double itemPrice)
     {
-      Assert.True(false, "implement this test to match the name and make it pass");
+      var itemPriceAsDecimal = (decimal)itemPrice;
+      Assert.True(false, " Exercise: implement this test to match the name and make it pass");
     }
 
     [Theory]
     [InlineData(0), InlineData(0.1), InlineData(1), InlineData(10000)]
     [AutoData]
-    public void marsian_b2b_tax_is_16_percent(double itemPrice, bool isConsumer)
+    public void marsian_b2b_tax_is_16_percent(double itemPrice)
     {
-      Assert.True(false, "implement this test to match the name and make it pass");
+      var itemPriceAsDecimal = (decimal)itemPrice;
+      Assert.True(false, " Exercise: implement this test to match the name and make it pass");
     }
 
-    private Order CreateOrder(PriceCalculator priceCalculator, double itemPrice, bool isConsumer)
+    private Order CreateOrder(PriceCalculator priceCalculator, decimal itemPrice, bool isConsumer)
     {
       return new Order(Enumerable.Repeat<OrderLine>(new OrderLine(new Sku(), 2, new Amount(Currency.DKK, itemPrice)), 2), 
                        priceCalculator,

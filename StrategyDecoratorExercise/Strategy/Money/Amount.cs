@@ -4,7 +4,7 @@
 
   public class Amount
   {
-    private readonly double amount = 0;
+    private readonly decimal amount = 0;
     private readonly Currency currency;
 
     public Amount(Currency currency)
@@ -12,7 +12,7 @@
       this.currency = currency;
     }
 
-    public Amount(Currency currency, double amount)
+    public Amount(Currency currency, decimal amount)
     {
       this.currency = currency;
       this.amount = amount;
@@ -30,12 +30,12 @@
       return new Amount(lhs.currency, lhs.amount * rhs.amount);
     }
 
-    public static Amount operator *(double lhs, Amount rhs)
+    public static Amount operator *(decimal lhs, Amount rhs)
     {
       return new Amount(rhs.currency, lhs * rhs.amount);
     }
 
-    public static Amount operator *(Amount lhs, double rhs)
+    public static Amount operator *(Amount lhs, decimal rhs)
     {
       return new Amount(lhs.currency, lhs.amount * rhs);
     }
