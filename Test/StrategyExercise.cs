@@ -39,7 +39,7 @@
     [InlineData(0, true), InlineData(0.1, true), InlineData(1, true), InlineData(10000, true)]
     [InlineData(0, false), InlineData(0.1, false), InlineData(1, false), InlineData(10000, false)]
     [AutoData]
-    public void danish_tax_is_25_percent(int itemPrice, bool isConsumer)
+    public void danish_tax_is_25_percent(double itemPrice, bool isConsumer)
     {
       // arrange
       var itemPriceAsDecimal = (decimal)itemPrice;
