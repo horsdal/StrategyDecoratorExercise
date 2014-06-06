@@ -6,5 +6,6 @@
     GBP,
     NOK,
     USB,
+    MAR
   }
 }

@@ -62,10 +62,10 @@
     {
       var itemPriceAsDecimal = (decimal)itemPrice;
       // arrange
-      var expected = new Price(new Amount(Currency.DKK, itemPriceAsDecimal * 4), new Amount(Currency.DKK, itemPriceAsDecimal * 4) *0.22m);
+      var expected = new Price(new Amount(Currency.MAR, itemPriceAsDecimal * 4), new Amount(Currency.MAR, itemPriceAsDecimal * 4) *0.22m);
       var sut = new MarisanTaxCalculationStrategy();
       var calculator = new PriceCalculator(sut);
-      var order = CreateOrder(calculator, itemPriceAsDecimal, isConsumer: true);
+      var order = CreateOrder(calculator, itemPriceAsDecimal, isConsumer: true, currency: Currency.MAR);
 
       // act
       var actual = order.CreateBill().Price;
@@ -81,10 +81,10 @@
     {
       var itemPriceAsDecimal = (decimal)itemPrice;
       // arrange
-      var expected = new Price(new Amount(Currency.DKK, itemPriceAsDecimal * 4), new Amount(Currency.DKK, itemPriceAsDecimal * 4) * 0.16m);
+      var expected = new Price(new Amount(Currency.MAR, itemPriceAsDecimal * 4), new Amount(Currency.MAR, itemPriceAsDecimal * 4) * 0.16m);
       var sut = new MarisanTaxCalculationStrategy();
       var calculator = new PriceCalculator(sut);
-      var order = CreateOrder(calculator, itemPriceAsDecimal, isConsumer: false);
+      var order = CreateOrder(calculator, itemPriceAsDecimal, isConsumer: false, currency: Currency.MAR);
 
       // act
       var actual = order.CreateBill().Price;
