@@ -13,7 +13,7 @@
 
     public Price CalculateTotal(Order order)
     {
-      var total = order.OrderLines.Aggregate(new Amount(Currency.DKK), (amount, line) => amount + line.ItemPrice * line.ItemCount);
+      var total = order.OrderLines.Aggregate(new Amount(order.Currency), (amount, line) => amount + line.ItemPrice * line.ItemCount);
       var tax = order.IsB2C ?
         taxCalculator.B2CTax(order, total) :
         taxCalculator.B2BTax(order, total);

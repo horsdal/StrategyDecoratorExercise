@@ -73,11 +73,11 @@
       Assert.True(false, " Exercise: implement this test to match the name and make it pass");
     }
 
-    private Order CreateOrder(PriceCalculator priceCalculator, decimal itemPrice, bool isConsumer)
+    private Order CreateOrder(PriceCalculator priceCalculator, decimal itemPrice, bool isConsumer, Currency currency = Currency.DKK)
     {
-      return new Order(Enumerable.Repeat<OrderLine>(new OrderLine(new Sku(), 2, new Amount(Currency.DKK, itemPrice)), 2), 
+      return new Order(Enumerable.Repeat(new OrderLine(new Sku(), 2, new Amount(currency, itemPrice)), 2), 
                        priceCalculator,
-                       new Customer { IsConsumer = isConsumer});
+                       new Customer { IsConsumer = isConsumer, Currency = currency});
     }
   }
 }

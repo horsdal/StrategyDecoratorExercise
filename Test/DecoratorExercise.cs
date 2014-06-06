@@ -65,11 +65,11 @@
     }
 
 
-    private Order CreateOrder(PriceCalculator priceCalculator, decimal itemPrice, bool isConsumer, int numItems)
+    private Order CreateOrder(PriceCalculator priceCalculator, decimal itemPrice, bool isConsumer, int numItems, Currency currency = Currency.DKK)
     {
-      return new Order(Enumerable.Repeat<OrderLine>(new OrderLine(new Sku(), 1, new Amount(Currency.DKK, itemPrice)), numItems), 
+      return new Order(Enumerable.Repeat(new OrderLine(new Sku(), 1, new Amount(currency, itemPrice)), numItems), 
                        priceCalculator,
-                       new Customer { IsConsumer = isConsumer});
+                       new Customer { IsConsumer = isConsumer, Currency = currency});
     }
   }
 }

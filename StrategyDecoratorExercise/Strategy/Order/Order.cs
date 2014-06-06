@@ -7,15 +7,17 @@
   public class Order
   {
     public IImmutableList<OrderLine> OrderLines { get; private set; }
-    public bool IsB2C { get; private set; }
+    public bool IsB2C { get { return customer.IsConsumer; } }
+    public Currency Currency { get { return customer.Currency; } }
 
     private readonly PriceCalculator priceCalculator;
+    private readonly Customer customer;
 
     public Order(IEnumerable<OrderLine> orderLines, PriceCalculator priceCalculator, Customer customer)
     {
       this.OrderLines = ImmutableList<OrderLine>.Empty.AddRange(orderLines);
       this.priceCalculator = priceCalculator;
-      this.IsB2C = customer.IsConsumer;
+      this.customer = customer;
     }
 
     public Bill CreateBill()

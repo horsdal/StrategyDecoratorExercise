@@ -2,12 +2,15 @@
 {
   using System.Collections.Generic;
   using System.Collections.Immutable;
+  using Money;
   using Price;
 
   public class Order
   {
     public IImmutableList<OrderLine> OrderLines { get; private set; }
-    public bool IsB2C { get; private set; }
+    public bool IsB2C { get { return customer.IsConsumer; } }
+    public Currency Currency { get { return customer.Currency; } }
+    private readonly Customer customer;
 
     private readonly PriceCalculator priceCalculator;
 
@@ -15,7 +18,7 @@
     {
       this.OrderLines = ImmutableList<OrderLine>.Empty.AddRange(orderLines);
       this.priceCalculator = priceCalculator;
-      this.IsB2C = customer.IsConsumer;
+      this.customer = customer;
     }
 
     public Bill CreateBill()
